@@ -69,8 +69,11 @@ def webhook():
 	method = "POST"
 	headers = {"Content-Type" : "application/json"}
 	text='p27bw7yga4'+text
+	text='"'+text+'"'
+	text='"message" : ' + text
+	text='"{'+text+'}"'
 	# PythonオブジェクトをJSONに変換する
-	obj = {"value1" : text} 
+	obj = {"value1" : text }
 	json_data = json.dumps(obj).encode("utf-8")
 
 	# httpリクエストを準備してPOST

@@ -65,10 +65,20 @@ def webhook():
 	else:
 		text=speak_date+'のイベントは見つかりませんでした。'
 	
-	r = make_response(jsonify({'speech':text,'displayText':text}))
-	r.headers['Content-Type'] = 'application/json'
-	
-	return r
+	#IFTTTにPOST
+	url = "https://maker.ifttt.com/trigger/Event_Info/with/key/c7O3t4lu4Gb6Y7qA9_19HzK0sD9wiqt6L99Ltti_TAE" 
+	method = "POST"
+	headers = {"Content-Type" : "application/json"}
+
+	# PythonオブジェクトをJSONに変換する
+	obj = {"value1" : text} 
+	json_data = json.dumps(obj).encode("utf-8")
+
+	# httpリクエストを準備してPOST
+	request = urllib.request.Request(url, data=json_data, method=method, headers=headers)
+    	with urllib.request.urlopen(request) as response:
+        	response_body = response.read().decode("utf-8")	
+
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))

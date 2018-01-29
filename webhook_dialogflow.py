@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-
+	now=datetime.datetime.now()
 	event_date= str(now.year)+"年"+str(now.month)+"月"+str(now.day)+"日"
 	speak_date="今日"
 	scope = ['https://www.googleapis.com/auth/drive']

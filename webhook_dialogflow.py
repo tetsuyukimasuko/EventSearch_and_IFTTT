@@ -72,7 +72,9 @@ def webhook():
 	# httpリクエストを準備してPOST
 	request = urllib.request.Request(url, data=json_data, method=method, headers=headers)
 	with urllib.request.urlopen(request) as response:
-		response_body = response.read().decode("utf-8")	
+		response_body = response.read().decode("utf-8")
+		
+	return 'Hello,world'
 
 
 if __name__ == '__main__':

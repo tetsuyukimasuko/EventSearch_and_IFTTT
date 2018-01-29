@@ -74,7 +74,7 @@ def webhook():
 	with urllib.request.urlopen(request) as response:
 		response_body = response.read().decode("utf-8")
 		
-	return 'Hello,world'
+	return text
 
 
 if __name__ == '__main__':

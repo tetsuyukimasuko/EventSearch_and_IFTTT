@@ -24,16 +24,9 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-	req = request.get_json(silent=True, force=True)
-	result = req.get("Event_date")
-	now=datetime.datetime.now()
 
-	if event_date=='today':
-		event_date= str(now.year)+"年"+str(now.month)+"月"+str(now.day)+"日"
-		speak_date="今日"
-	elif event_date=='tomorrow':
-		event_date= str(now.year)+"年"+str(now.month)+"月"+str(now.day+1)+"日"
-		speak_date="明日"
+	event_date= str(now.year)+"年"+str(now.month)+"月"+str(now.day)+"日"
+	speak_date="今日"
 	scope = ['https://www.googleapis.com/auth/drive']
 	
     #ダウンロードしたjsonファイルを同じフォルダに格納して指定する

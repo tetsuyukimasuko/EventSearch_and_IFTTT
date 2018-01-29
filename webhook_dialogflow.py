@@ -70,7 +70,7 @@ def webhook():
 	url = "https://maker.ifttt.com/trigger/Event_Info/with/key/c7O3t4lu4Gb6Y7qA9_19HzK0sD9wiqt6L99Ltti_TAE" 
 	method = "POST"
 	headers = {"Content-Type" : "application/json"}
-
+	text='p27bw7yga4'+text
 	# PythonオブジェクトをJSONに変換する
 	obj = {"value1" : text} 
 	json_data = json.dumps(obj).encode("utf-8")

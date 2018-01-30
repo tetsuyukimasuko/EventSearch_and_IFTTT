@@ -58,15 +58,12 @@ def webhook():
 	else:
 		text=speak_date+'のイベントは見つかりませんでした。'
 	
-	#IFTTTにPOST
-	url = "https://maker.ifttt.com/trigger/Event_Info/with/key/c7O3t4lu4Gb6Y7qA9_19HzK0sD9wiqt6L99Ltti_TAE" 
+	#GHkitにPOST
+	url='http://ifttt.ghkit.jp/'
 	headers = {"Content-Type" : "application/json"}
 	text='p27bw7yga4'+text
 	text='"'+text+'"'
-	text='"message" : ' + text
-	text='{'+text+'}'
-	# PythonオブジェクトをJSONに変換する
-	obj = {"value1" : text }
+	obj={"message" : text}
 	json_data = json.dumps(obj).encode("utf-8")
 
 	# httpリクエストを準備してPOST

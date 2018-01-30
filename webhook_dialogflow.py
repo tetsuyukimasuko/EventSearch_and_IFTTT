@@ -23,7 +23,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 app = Flask(__name__)
 
 
-@app.route('/webhook', methods=['POST'])
+@app.route('/webhook', methods=['POST','GET'])
 def webhook():
 	now=datetime.datetime.now()
 	event_date= str(now.year)+"年"+str(now.month)+"月"+str(now.day)+"日"

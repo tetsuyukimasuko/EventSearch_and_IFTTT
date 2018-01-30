@@ -6,6 +6,7 @@ from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
 from urllib.error import HTTPError
 import urllib
+import requests
 
 import json
 import os
@@ -59,7 +60,6 @@ def webhook():
 	
 	#IFTTTにPOST
 	url = "https://maker.ifttt.com/trigger/Event_Info/with/key/c7O3t4lu4Gb6Y7qA9_19HzK0sD9wiqt6L99Ltti_TAE" 
-	method = "POST"
 	headers = {"Content-Type" : "application/json"}
 	text='p27bw7yga4'+text
 	text='"'+text+'"'
@@ -70,11 +70,9 @@ def webhook():
 	json_data = json.dumps(obj).encode("utf-8")
 
 	# httpリクエストを準備してPOST
-	request = urllib.request.Request(url, data=json_data, method=method, headers=headers)
-	with urllib.request.urlopen(request) as response:
-		response_body = response.read().decode("utf-8")
+	r = requests.post(url, data=json_data, headers=headers)
 		
-	return text
+	return r
 
 
 if __name__ == '__main__':

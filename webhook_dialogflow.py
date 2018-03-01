@@ -102,16 +102,17 @@ def webhook():
 
 		else:
 			text='おはようございます。近くでイベントは特にありませんが、'
-
+			
+	url='http://ifttt.ghkit.jp/'
+	headers = {"Content-Type" : "application/json"}
+	text=text+'外に出かけてみては、いかがでしょうか。'
+	
 	for j in range(len(GHkit_ID)):
 	#GHkitにPOST
-		url='http://ifttt.ghkit.jp/'
-		headers = {"Content-Type" : "application/json"}
-		text=text+'外に出かけてみては、いかがでしょうか。'
 
-		text=GHkit_ID[j]+text
-		text='"'+text+'"'
-		obj={"message" : text}
+		text_post=GHkit_ID[j]+text
+		text_post='"'+text_post+'"'
+		obj={"message" : text_post}
 		json_data = json.dumps(obj).encode("utf-8")
 
 		# httpリクエストを準備してPOST

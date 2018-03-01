@@ -58,7 +58,7 @@ def webhook():
 		places=df_filtered['場所'].values.tolist()
 		timestamps=df_filtered['時間'].values.tolist()
 		regions=df_filtered['地区'].values.tolist()
-		text=speak_date+'は、'
+		text='おはようございます。'+speak_date+'は、'
 
 		for i in range(length):
 			if i>0:
@@ -87,7 +87,7 @@ def webhook():
 			places=df_filtered['場所'].values.tolist()
 			timestamps=df_filtered['時間'].values.tolist()
 			regions=df_filtered['地区'].values.tolist()
-			text='今日はイベントはありません。近い日にちだと、'+str(date_list[j]).replace('2018年','')+'に'
+			text='おはようございます。今日はイベントはありません。近い日にちだと、'+str(date_list[j]).replace('2018年','')+'に'
 
 			for i in range(length):
 				if i>0:
@@ -98,12 +98,13 @@ def webhook():
 					text=text+places[i] +"で"+timestamps[i]+"から"+titles[i]+"があります。"
 
 		else:
-			text='すみません。あまり先の日程まではわかりません。'
+			text='おはようございます。近くでイベントは特にありませんが、'
 
 	
 	#GHkitにPOST
 	url='http://ifttt.ghkit.jp/'
 	headers = {"Content-Type" : "application/json"}
+	text=text+'外に出かけてみては、いかがでしょうか。'
 	text='p27bw7yga4'+text
 	text='"'+text+'"'
 	obj={"message" : text}

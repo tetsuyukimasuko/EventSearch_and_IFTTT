@@ -27,11 +27,10 @@ app = Flask(__name__)
 
 
 
-@app.route('/webhook', methods=['POST'])
+@app.route('/webhook', methods=['POST','GET'])
 def webhook():
 	
-	req = request.get_json(silent=True, force=True)
-	GHkit_ID = req.get("ID")
+	GHkit_ID=['p27bw7yga4','52s6t8fd8b']
 	
 	now=datetime.datetime.now()
 	event_date= str(now.year)+"年"+str(now.month)+"月"+str(now.day)+"日"
@@ -104,21 +103,21 @@ def webhook():
 		else:
 			text='おはようございます。近くでイベントは特にありませんが、'
 
-	
+	for j in range(len(GHkit_ID)):
 	#GHkitにPOST
-	url='http://ifttt.ghkit.jp/'
-	headers = {"Content-Type" : "application/json"}
-	text=text+'外に出かけてみては、いかがでしょうか。'
-	
-	text=GHkit_ID+text
-	text='"'+text+'"'
-	obj={"message" : text}
-	json_data = json.dumps(obj).encode("utf-8")
+		url='http://ifttt.ghkit.jp/'
+		headers = {"Content-Type" : "application/json"}
+		text=text+'外に出かけてみては、いかがでしょうか。'
 
-	# httpリクエストを準備してPOST
-	r = requests.post(url, data=json_data, headers=headers)
-		
-	return r
+		text=GHkit_ID[j]+text
+		text='"'+text+'"'
+		obj={"message" : text}
+		json_data = json.dumps(obj).encode("utf-8")
+
+		# httpリクエストを準備してPOST
+		r = requests.post(url, data=json_data, headers=headers)
+
+		yeild r
 
 
 if __name__ == '__main__':

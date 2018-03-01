@@ -67,9 +67,9 @@ def webhook():
 			if i>0:
 				text=text+'また、'
 			if timestamps[i]=='-':
-				text=text+places[i] +"で"+titles[i]+"があります。"
+				text=text+places[i] +"で、"+titles[i]+"があります。"
 			else:
-				text=text+places[i] +"で"+timestamps[i]+"から"+titles[i]+"があります。"
+				text=text+places[i] +"で、"+timestamps[i]+"から"+titles[i]+"があります。"
 
 	#なかった場合、一番近いものを持ってくる
 	else:
@@ -96,9 +96,9 @@ def webhook():
 				if i>0:
 					text=text+'また、'
 				if timestamps[i]=='-':
-					text=text+places[i] +"で"+titles[i]+"があります。"
+					text=text+places[i] +"で、"+titles[i]+"があります。"
 				else:
-					text=text+places[i] +"で"+timestamps[i]+"から"+titles[i]+"があります。"
+					text=text+places[i] +"で、"+timestamps[i]+"から"+titles[i]+"があります。"
 
 		else:
 			text='おはようございます。近くでイベントは特にありませんが、'

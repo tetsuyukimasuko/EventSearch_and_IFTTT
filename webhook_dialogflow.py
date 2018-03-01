@@ -31,7 +31,7 @@ app = Flask(__name__)
 def webhook():
 	
 	req = request.get_json(silent=True, force=True)
-	ID = req.get("ID")
+	GHkit_ID = req.get("ID")
 	
 	now=datetime.datetime.now()
 	event_date= str(now.year)+"年"+str(now.month)+"月"+str(now.day)+"日"
@@ -110,7 +110,7 @@ def webhook():
 	headers = {"Content-Type" : "application/json"}
 	text=text+'外に出かけてみては、いかがでしょうか。'
 	
-	text=ID+text
+	text=GHkit_ID+text
 	text='"'+text+'"'
 	obj={"message" : text}
 	json_data = json.dumps(obj).encode("utf-8")

@@ -107,6 +107,8 @@ def webhook():
 	headers = {"Content-Type" : "application/json"}
 	text=text+'外に出かけてみては、いかがでしょうか。'
 	
+	r=[]
+	
 	for j in range(len(GHkit_ID)):
 	#GHkitにPOST
 
@@ -116,9 +118,9 @@ def webhook():
 		json_data = json.dumps(obj).encode("utf-8")
 
 		# httpリクエストを準備してPOST
-		r = requests.post(url, data=json_data, headers=headers)
+		r.append(requests.post(url, data=json_data, headers=headers))
 
-		return r
+	return r
 
 
 if __name__ == '__main__':

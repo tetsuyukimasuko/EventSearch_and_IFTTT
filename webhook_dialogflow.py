@@ -27,8 +27,12 @@ app = Flask(__name__)
 
 
 
-@app.route('/webhook', methods=['POST','GET'])
+@app.route('/webhook', methods=['POST'])
 def webhook():
+	
+	req = request.get_json(silent=True, force=True)
+	ID = req.get("ID")
+	
 	now=datetime.datetime.now()
 	event_date= str(now.year)+"年"+str(now.month)+"月"+str(now.day)+"日"
 	speak_date="今日"
@@ -105,7 +109,8 @@ def webhook():
 	url='http://ifttt.ghkit.jp/'
 	headers = {"Content-Type" : "application/json"}
 	text=text+'外に出かけてみては、いかがでしょうか。'
-	text='p27bw7yga4'+text
+	
+	text=ID+text
 	text='"'+text+'"'
 	obj={"message" : text}
 	json_data = json.dumps(obj).encode("utf-8")

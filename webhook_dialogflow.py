@@ -117,7 +117,7 @@ def webhook():
 		# httpリクエストを準備してPOST
 		r = requests.post(url, data=json_data, headers=headers)
 
-		yeild r
+		yield r
 
 
 if __name__ == '__main__':

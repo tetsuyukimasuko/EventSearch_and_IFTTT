@@ -30,8 +30,8 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST','GET'])
 def webhook():
 	
-	GHkit_ID=['p27bw7yga4','52s6t8fd8b']
-	
+	#GHkit_ID=['p27bw7yga4','52s6t8fd8b']
+	GHkit_ID=['52s6t8fd8b','p27bw7yga4']
 	now=datetime.datetime.now()
 	event_date= str(now.year)+"年"+str(now.month)+"月"+str(now.day)+"日"
 	speak_date="今日"
